@@ -1,0 +1,36 @@
+
+
+
+
+things ive done: 
+
+LOGIN
+
+- login ui [done]
+- jwt  [done]
+- push to dashboard  [done]
+
+
+
+
+[DASHBOARD]
+
+-HEADER 
+
+
+-SIDERBAR
+
+-FOOTER
+
+
+-DYNAMIC CONTENT
+  - ROUTING DONE
+  LISTING PAGE - [ipg]
+  CREATE PAGE - [ipg]
+  UPDATE PAGE - [ipg]
+  SIGNUP PAGE - [ipg]
+
+-DYNAMIC
+
+
+

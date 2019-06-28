@@ -27,9 +27,9 @@ class Sidebar extends Component {
   }
 
   componentDidMount(){
-    this.getUserInfo()
-    this.getLanguage()
-    this.getUserProfile()
+    // this.getUserInfo()
+    // this.getLanguage()
+    // this.getUserProfile()
 
   }
 
@@ -37,7 +37,6 @@ class Sidebar extends Component {
 
     if(nextProps.language !== this.props.language){
       console.log(nextProps.language)
-
       this.setlanguageText(nextProps.language)
     }
   }
@@ -46,100 +45,100 @@ class Sidebar extends Component {
 
   }
 
-  //CRUD
-  getUserInfo = async () => {
-    const res = await fetch(this.props.api+"/usergetinfo",{
-      method:'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'authentication':window.localStorage.getItem("session"),
-        'user_id':this.props.userId
-      },
-    })
+  // //CRUD
+  // getUserInfo = async () => {
+  //   const res = await fetch(this.props.api+"/usergetinfo",{
+  //     method:'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'authentication':window.localStorage.getItem("session"),
+  //       'user_id':this.props.userId
+  //     },
+  //   })
+  //
+  //   const response = await res.json()
+  //   // console.log("getUserInfo: ",response)
+  // }
 
-    const response = await res.json()
-    // console.log("getUserInfo: ",response)
-  }
+  // userCharge = async () => {
+  //   const res = await fetch(this.props.api+"/userbalance",{
+  //     method:'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'authentication':window.localStorage.getItem("session")
+  //     },
+  //     body:JSON.stringify({
+  //       "user_id":this.props.userId,
+  //       "balance":this.state.chargeBalance
+  //     })
+  //   })
+  //
+  //   const response = await res.json()
+  //   console.log("userCharge: ",response)
+  //
+  //   if (response.message == "success" ) {
+  //       return true
+  //   } else {
+  //       return false
+  //   }
+  // }
 
-  userCharge = async () => {
-    const res = await fetch(this.props.api+"/userbalance",{
-      method:'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'authentication':window.localStorage.getItem("session")
-      },
-      body:JSON.stringify({
-        "user_id":this.props.userId,
-        "balance":this.state.chargeBalance
-      })
-    })
-
-    const response = await res.json()
-    console.log("userCharge: ",response)
-
-    if (response.message == "success" ) {
-        return true
-    } else {
-        return false
-    }
-  }
-
-  userUpdatePhoto = async () => {
-
-    const formData = new FormData()
-      formData.append(
-        'userImage',
-        this.state.imageBlob,
-        this.state.imageBlob.name
-      )
-
-    const res = await axios.put(this.props.api+"/updateimage", formData, {
-        headers: {
-          'authentication':window.localStorage.getItem("session"),
-          "Content-Type": "multipart/form-data",
-          "userid":this.props.userId,
-          }
-       })
-
-    if(res.status == 200){
-      return true
-    }else{
-      return false
-
-    }
-  }
-
-
-
-
-
-  getUserProfile = async () => {
-    const res = await fetch(this.props.api + "/usergetinfo", {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "authentication": window.localStorage.getItem("session"),
-        "user_id": this.props.userId,
-      },
-    });
-    const response = await res.json();
-    // console.log("getUserProfile", response);
-
-
-    this.setState({
-      getUserInfoData: response.data
-    });
-
-    this.setImage(this.state.getUserInfoData.profile_img)
-  }
-
-
-  setImage = (e) => {
-
-    this.setState({
-      setImage:this.props.api+"/"+e
-    })
-  }
+  // userUpdatePhoto = async () => {
+  //
+  //   const formData = new FormData()
+  //     formData.append(
+  //       'userImage',
+  //       this.state.imageBlob,
+  //       this.state.imageBlob.name
+  //     )
+  //
+  //   const res = await axios.put(this.props.api+"/updateimage", formData, {
+  //       headers: {
+  //         'authentication':window.localStorage.getItem("session"),
+  //         "Content-Type": "multipart/form-data",
+  //         "userid":this.props.userId,
+  //         }
+  //      })
+  //
+  //   if(res.status == 200){
+  //     return true
+  //   }else{
+  //     return false
+  //
+  //   }
+  // }
+  //
+  //
+  //
+  //
+  //
+  // getUserProfile = async () => {
+  //   const res = await fetch(this.props.api + "/usergetinfo", {
+  //     method: 'GET',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "authentication": window.localStorage.getItem("session"),
+  //       "user_id": this.props.userId,
+  //     },
+  //   });
+  //   const response = await res.json();
+  //   // console.log("getUserProfile", response);
+  //
+  //
+  //   this.setState({
+  //     getUserInfoData: response.data
+  //   });
+  //
+  //   this.setImage(this.state.getUserInfoData.profile_img)
+  // }
+  //
+  //
+  // setImage = (e) => {
+  //
+  //   this.setState({
+  //     setImage:this.props.api+"/"+e
+  //   })
+  // }
 
   tabChange=(headerTitle,url)=>{
     console.log(url)
@@ -147,69 +146,64 @@ class Sidebar extends Component {
   this.props.onClickEvent(headerTitle)
   }
 
-  // goToUserProfile = () => {
-  //   history.push('/userprofile')
+  // openUserBalanceModal = () =>{
+  //   this.setState({
+  //     openUserBalance:true
+  //   })
   // }
-
-  //OPEN MODAL
-  openUserBalanceModal = () =>{
-    this.setState({
-      openUserBalance:true
-    })
-  }
-  openUserChargeModal = () =>{
-    this.setState({
-      openUserCharge:true
-    })
-  }
-
-  openUserUpdatePhotoModal = () => {
-    this.setState({
-      openUserUpdatePhoto:true
-    })
-  }
-
-  //CLOSE MODAL
-  closeUserBalanceModal = () =>{
-    this.setState({
-      openUserBalance:false
-    })
-  }
-
-  closeUserUpdatePhotoModal = () => {
-    this.setState({
-      openUserUpdatePhoto:false
-    })
-  }
-
-  closeUserChargeModal = () =>{
-    this.setState({
-      openUserCharge:false
-    })
-  }
-
-
-  //MODAL
-  userChargeModal = async () => {
-    if(await this.userCharge()){
-      this.success()
-      this.closeUserChargeModal()
-    }else{
-      this.error()
-      this.closeUserChargeModal()
-    }
-  }
-
-
-  userUpdatePhotoModal = async () => {
-    if(await this.userUpdatePhoto()){
-      this.closeUserUpdatePhotoModal()
-      this.success()
-      this.getUserProfile()
-    }else{
-      this.error()
-    }
-  }
+  // openUserChargeModal = () =>{
+  //   this.setState({
+  //     openUserCharge:true
+  //   })
+  // }
+  //
+  // openUserUpdatePhotoModal = () => {
+  //   this.setState({
+  //     openUserUpdatePhoto:true
+  //   })
+  // }
+  //
+  // //CLOSE MODAL
+  // closeUserBalanceModal = () =>{
+  //   this.setState({
+  //     openUserBalance:false
+  //   })
+  // }
+  //
+  // closeUserUpdatePhotoModal = () => {
+  //   this.setState({
+  //     openUserUpdatePhoto:false
+  //   })
+  // }
+  //
+  // closeUserChargeModal = () =>{
+  //   this.setState({
+  //     openUserCharge:false
+  //   })
+  // }
+  //
+  //
+  // //MODAL
+  // userChargeModal = async () => {
+  //   if(await this.userCharge()){
+  //     this.success()
+  //     this.closeUserChargeModal()
+  //   }else{
+  //     this.error()
+  //     this.closeUserChargeModal()
+  //   }
+  // }
+  //
+  //
+  // userUpdatePhotoModal = async () => {
+  //   if(await this.userUpdatePhoto()){
+  //     this.closeUserUpdatePhotoModal()
+  //     this.success()
+  //     this.getUserProfile()
+  //   }else{
+  //     this.error()
+  //   }
+  // }
 
   onChange = (e) =>{
   this.setState({[e.target.name]:e.target.value})
@@ -284,17 +278,13 @@ class Sidebar extends Component {
   }
 
 
-
-  previewFile = () => {
-    let imageFile = document.getElementById('imageFile').files[0]
-
-    this.setState({
-      imageBlob:imageFile
-    })
-
-
-
-  }
+  // previewFile = () => {
+  //   let imageFile = document.getElementById('imageFile').files[0]
+  //
+  //   this.setState({
+  //     imageBlob:imageFile
+  //   })
+  // }
 
 
 
@@ -303,87 +293,38 @@ class Sidebar extends Component {
       <div className="sidenav">
         <div className="sidenav-container">
           <div className="logo-container">
-            <div className="logo-content">
-              <div className="logo">
-                <img src={Logo} style={{width: "148px", height: "40px",marginLeft: "-12px"}} />
-              </div>
-            </div>
-          </div>
-
-          <div className="user-profile-container">
-            <div className="flex-center">
-              <div className="user-profile-img">
-              <img src={this.state.setImage} alt=""/>
-              <div className="edit-user-image-container">
-                <FontAwesomeIcon onClick={this.openUserUpdatePhotoModal} className="edit-user-image user-icons"  icon="camera"/>
-              </div>
+              <div className="logo-content">
+                <h6>ADMIN PANEL</h6>
 
               </div>
-            </div>
-            <div className="flex-center">
-              <h6><span style={this.props.userBlocked ? {color:"red"} : {color:"white"}}> {this.props.userRole}</span> : <span className="user-sidebar-role">{this.props.userName}</span></h6>
-            </div>
-            {/* <div className="flex-center">
-              <div  className="user-profile-role">
-                <strong>Role: </strong><span style={this.props.userBlocked ? {color:"red"} : {color:"white"}}> {this.props.userRole}</span>
-              </div>
-            </div> */}
-
-            <div style={this.props.userRole !== "Agent" ? {display:"block"} : {display:"none"}}>
-              <div className="flex-center">
-                <div className="user-icons flex-around" style={{width:"30%"}}>
-                  {/* <FontAwesomeIcon className="user-icon-style"  icon="money-check" onClick={this.openUserBalanceModal}/> <span>|</span> */}
-                  <FontAwesomeIcon className="user-icon-style" onClick={this.props.userBlocked ? this.blockPopup : ()=>this.tabChange("User Profile","userprofile")} icon="users-cog"/>  <span style={this.props.userRole === "Admin" ? {display:"none"} : {display:"block"}}>|</span>
-                  <FontAwesomeIcon className="user-icon-style" icon="cash-register"  onClick={this.props.userBlocked ? this.blockPopup : this.openUserChargeModal} style={this.props.userRole === "Admin" ? {display:"none"} : {display:"block"}}/>
-                </div>
-              </div>
-            </div>
-
-            <div style={this.props.userRole === "Agent" ? {display:"block"} : {display:"none"}}>
-              <div className="flex-center">
-                <div className="user-icons flex-around" style={this.props.userRole === "Agent" ? {width:"30%"} : {width:"50%"} }>
-                  <FontAwesomeIcon className="user-icon-style" onClick={()=>this.tabChange("User Profile","userprofile")} icon="users-cog"/>  <span style={this.props.userRole === "Admin" ? {display:"none"} : {display:"block"}}></span>
-                </div>
-              </div>
-            </div>
-
           </div>
 
           <div className="sidenav-module-container">
-            <div onClick={()=>this.tabChange("Order Management","order")} className={this.props.headerTitle==="Order Management" ? "selsectedSidebar" : "sidenav-content"} >
+            <div onClick={()=>this.tabChange("Listing Page","listingpage")} className={this.props.headerTitle==="Listing Page" ? "selsectedSidebar" : "sidenav-content"} >
               <div className="sidenav-icon">
                 <i  className="sidenav-icon-child">
                   <FontAwesomeIcon icon="donate"/>
                 </i>
               </div>
-              <div className="sidenav-text">{this.state.languageText.orderManagement}</div>
+              <div className="sidenav-text">Listing Page</div>
             </div>
 
-            <div className="sidenav-content" onClick={()=>this.tabChange("Deposit Flow Management","deposit")}  className={this.props.headerTitle==="Deposit Flow Management" ? "selsectedSidebar" : "sidenav-content"} style={this.props.userRole === "Agent" || this.props.userRole === "Admin" || this.props.userRole === "Merchant" || this.props.userRole === "User" ? {display:"block"} : {display:"none"}}>
+            <div className="sidenav-content" onClick={()=>this.tabChange("Create Page","createpage")}  className={this.props.headerTitle==="Create Page" ? "selsectedSidebar" : "sidenav-content"}>
               <div className="sidenav-icon">
                 <i className="sidenav-icon-child">
                   <FontAwesomeIcon icon="money-check-alt"/>
                 </i>
               </div>
-              <div className="sidenav-text">{this.state.languageText.depositManagement}</div>
+              <div className="sidenav-text">Create Page</div>
             </div>
 
-            <div className="sidenav-content" onClick={()=>this.tabChange("User","user")}  className={this.props.headerTitle==="User" ? "selsectedSidebar" : "sidenav-content"} style={this.props.userRole === "Admin" || this.props.userRole === "Agent"  ? {display:"block"} : {display:"none"}}>
+            <div className="sidenav-content" onClick={()=>this.tabChange("Update Page","updatepage")}  className={this.props.headerTitle==="Update Page" ? "selsectedSidebar" : "sidenav-content"}>
               <div className="sidenav-icon">
                 <i className="sidenav-icon-child">
-                  <FontAwesomeIcon icon="user-edit"/>
+                  <FontAwesomeIcon icon="eye"/>
                 </i>
               </div>
-              <div className="sidenav-text">{this.state.languageText.user}</div>
-            </div>
-
-            <div className="sidenav-content" onClick={()=>this.tabChange("Balance Request","balancerequest")}  className={this.props.headerTitle==="Balance Request" ? "selsectedSidebar" : "sidenav-content"} style={this.props.userRole === "Admin" ? {display:"block"} : {display:"none"}}>
-              <div className="sidenav-icon">
-                <i className="sidenav-icon-child">
-                  <FontAwesomeIcon icon="money-check"/>
-                </i>
-              </div>
-              <div className="sidenav-text">{this.state.languageText.balanceRequest}</div>
+              <div className="sidenav-text">Update Page</div>
             </div>
 
           </div>

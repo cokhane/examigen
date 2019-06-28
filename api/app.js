@@ -6,13 +6,7 @@ const mongoose = require('mongoose')
 const database = require('./database');
 
 
-const productRoutes = require('./api/routes/products')
-const orderRoutes = require('./api/routes/orders')
 const userRoutes = require('./api/routes/users')
-const tenantRoutes = require('./api/routes/users')
-const roomRoutes = require('./api/routes/rooms')
-const appartmentRoutes = require('./api/routes/appartments')
-const ownerRoutes = require('./api/routes/owners')
 
 // mongoose.connect('localhost:27017')
 
@@ -41,13 +35,9 @@ app.use((req, res, next) => {
 
 
 //Routes which should handle request
-app.use('/products',productRoutes)
-app.use('/orders',orderRoutes)
+
 app.use('/users',userRoutes)
-app.use('/tenants',tenantRoutes)
-app.use('/rooms',roomRoutes)
-app.use('/appartments',appartmentRoutes)
-app.use('/owners',ownerRoutes)
+
 
 app.use((req,res,next) => {
   const error = new Error('Not Found')

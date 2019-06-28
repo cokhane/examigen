@@ -12,7 +12,7 @@ class Footer extends Component {
       return (
         <div className="footer-component">
           <div  className="footer-text">
-            &copy;2019 Admin Ryan Bakla Ulol Gago by @cokhane
+            Footer
           </div>
         </div>
      );

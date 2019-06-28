@@ -7,46 +7,30 @@ function Loading(){
 }
 
 
-const OrderManagement = Loadable({
-  loader: () => import('../views/order/order.js'),
+const ListingPage = Loadable({
+  loader: () => import('../views/listingpage/listingpage.js'),
   loading: Loading,
 });
 
-const DepositFlow = Loadable({
-  loader: () => import('../views/deposit/deposit.js'),
+const CreatePage = Loadable({
+  loader: () => import('../views/createpage/createpage.js'),
   loading: Loading,
 });
 
-const User = Loadable({
-  loader: () => import('../views/user/userparent.js'),
+const UpdatePage = Loadable({
+  loader: () => import('../views/updatepage/updatepage.js'),
   loading: Loading,
 });
 
-const UserProfile = Loadable({
-  loader: () => import('../views/userprofile/userprofile.js'),
-  loading: Loading,
-});
-
-const BalanceRequest = Loadable({
-  loader: () => import('../views/balancerequest/balancerequest.js'),
-  loading: Loading,
-});
-
-const Setting = Loadable({
-  loader: () => import('../views/setting/setting.js'),
-  loading: Loading,
-});
 
 
 
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
-  // { path: '/order', exact: true, name: 'Order Management', component: OrderManagement },
-  // { path: '/deposit', name: 'Deposit Flow Management', component: DepositFlow },
-  { path: '/user', name: 'User Management', component: User },
-  // { path: '/setting', name: 'Setting Management', component: Setting },
-  // { path: '/userprofile', name: 'User Profile', component: UserProfile },
-  // { path: '/balancerequest', name: 'User Profile', component: BalanceRequest },
+  { path: '/listingpage', exact: true, name: 'Listing Page', component: ListingPage },
+  { path: '/createpage', name: 'Create Page', component: CreatePage },
+  { path: '/updatepage', name: 'Update Page', component: UpdatePage },
+
 ];
 
 export default routes;

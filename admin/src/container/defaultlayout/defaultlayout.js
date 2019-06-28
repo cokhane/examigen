@@ -18,17 +18,7 @@ class DefaultLayout extends Component {
   constructor(props){
     super(props);
     this.state={
-      userRole:null,
-      userName:null,
-      userId:null,
-      userBlocked:null,
-      userProfileImage:null,
-      headerTitle:'Order Management',
-      token:'0c8058112a1139fea537d50820b237f2',
-      api:'https://api.payqr.cash',
-      language:window.localStorage.getItem('lang'),
-      userBalance:null,
-
+      headerTitle:'Listing Page',
     }
   }
 
@@ -38,11 +28,7 @@ class DefaultLayout extends Component {
     })
   }
 
-  languageOnClickEvent= (e)=>{
-     this.setState({
-      language:e
-    })
-  }
+
 
   eventFunction = async (e) => {
     await this.setState({
@@ -133,7 +119,7 @@ class DefaultLayout extends Component {
             <div className="defaultlayout-header">
             <Header userBalanceFunction={(e) => this.userBalanceFunction(e)} userBlocked={this.state.userBlocked} userRole={this.state.userRole} userId={this.state.userId} api={this.state.api} headerTitle={this.state.headerTitle} languageOnClickEvent={(e) => this.languageOnClickEvent(e)}/>
             </div>
-              <Breadcrump  eventFunction={(e) => this.eventFunction(e)} headerTitle={this.state.headerTitle} />
+             {/* <Breadcrump  eventFunction={(e) => this.eventFunction(e)} headerTitle={this.state.headerTitle} /> */}
             <div>
             </div>
             <div className="defaultlayout-dynamic">
@@ -148,7 +134,7 @@ class DefaultLayout extends Component {
                           : (null);
                        },
                       )}
-                      <Redirect from="/" to="/order" />
+                      <Redirect from="/" to="/listingpage" />
                    </Switch>
                   </Router>
                </div>

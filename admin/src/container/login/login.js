@@ -17,23 +17,23 @@ class Login extends Component {
   }
 
   login = async () =>{
-    const res = await fetch("https://api.payqr.cash/login",{
+    const res = await fetch("http://localhost:4000/users/login",{
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({
-        "username":this.state.loginUsername,
+        "email":this.state.loginUsername,
         "password":this.state.loginPassword
       })
     })
 
     const response = await res.json()
 
-    console.log("token: ",response)
+    // console.log("login : ", response)
 
-    if (response.message == "success" ) {
-        const token = response.data[0].token
+    if (response.status == "200" ) {
+        const token = response.token
         this.setState({
           loginToken:token
         })
@@ -66,13 +66,14 @@ class Login extends Component {
 
   checkValidToken = () => {
     const checkToken = this.state.loginToken
-    const key = "secretkey"
+    console.log(checkToken)
+    const key = "secret" // recheck this
 
     try{
+
     const verifyToken = jwt.verify(checkToken, key)
     window.localStorage.setItem("session",checkToken);
     return true
-
     }catch(err){
   	  return false
   	}
@@ -109,11 +110,10 @@ class Login extends Component {
         <div className="login-container">
           <div className="flex-center">
             <div className="login-box">
-              <input className="login-username form-control" onKeyPress={this.onEnter} type="text" placeholder="Username..." name="loginUsername"  onChange={this.onChange}/> <br/>
+              <input className="login-username form-control" onKeyPress={this.onEnter} type="text" placeholder="Email..." name="loginUsername"  onChange={this.onChange}/> <br/>
               <input className="login-password form-control" onKeyPress={this.onEnter}  type="password" placeholder="Password..." name="loginPassword" onChange={this.onChange}/>
               <div className="flex-end">
-               {/* <button className="btn btn-primary btn-sm" onClick={this.loginModal} >Login</button> */}
-                <button className="btn btn-primary btn-sm" onClick={this.testLogin} >Test</button>
+               <button className="btn btn-primary btn-sm" onClick={this.loginModal} >Login</button>
 
 
               </div>

@@ -5,25 +5,25 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const User = require('../models/user')
-const Room = require('../models/room')
 
 
 
 router.get('/', (req,res,next) => {
   User.find()
-  .populate('room','name rent')
+  // .populate('room','name rent')
   .exec()
   .then(docs => {
-    console.log(docs)
     const response = {
       count:docs.length,
       userInfo: docs.map(item => {
           return{
-            name:item.name,
-            start_date: convertDate(item.start_date),
             _id:item._id,
-            deposit:item.deposit,
-            roomInfo:item.room
+            firstname:item.firstname,
+            lastname:item.lastname,
+            email:item.email,
+            age:item.age,
+            company:item.company,
+            gender:item.gender,
           }
         })
       }
@@ -44,59 +44,6 @@ router.get('/', (req,res,next) => {
   })
 })
 
-
-
-// router.post('/', async (req, res, next) => {
-//     Room.findById(req.body.roomId)
-//     .then(room => {
-//       if(!room){
-//         return res.status(404).json({
-//           message: 'Room not found'
-//         })
-//       }
-//       console.log('hehe: ', req.body.startDate)
-//       const user = new User({
-//         _id:mongoose.Types.ObjectId(),
-//         name: req.body.name,
-//         room: req.body.roomId,
-//         start_date: convertDate(req.body.startDate),
-//
-//       })
-//
-//
-//       return user.save()
-//     })
-//
-//     .then(result => {
-//       console.log("\n")
-//
-//         console.log("result: ", result)
-//         console.log("\n")
-//         res.status(201).json({
-//           message:'User Registered',
-//           user:{
-//             _id: result._id,
-//             room: result.room,
-//             name: result.name,
-//             start_date:result.start_date,
-//             deposit:result.deposit
-//           },
-//           request:{
-//               type: 'GET',
-//               url: 'http://localhost:3000/users/' + result._id
-//           }
-//         })
-//       })
-//       .catch(err => {
-//         console.log(err)
-//         res.status(500).json({
-//           error:err
-//         })
-//       })
-// })
-
-
-// ---------------------------------------- AUTH
 
 
 router.post('/signup', (req, res, next) => {
@@ -120,13 +67,16 @@ router.post('/signup', (req, res, next) => {
            firstname: req.body.firstname,
            lastname: req.body.lastname,
            email: req.body.email,
+           age: req.body.age,
+           company: req.body.company,
+           gender: req.body.gender,
            password: hash
          })
          user.save()
          .then(result => {
-           console.log('yeah:', result)
            res.status(201).json({
-             message:'User Created Successfully'
+             message:'User Created Successfully',
+             status:200
            })
          }).catch(err => {
            res.status(500).json({
@@ -165,7 +115,8 @@ router.post('/signup', (req, res, next) => {
           })
           return res.status(200).json({
             message: 'Auth Successfully',
-            token:token
+            token:token,
+            status:200
           })
         }
         res.status(401).json({
@@ -187,10 +138,10 @@ router.post('/signup', (req, res, next) => {
       .then(result => {
         res.status(200).json({
           message:"Delete Success!",
+          status:200,
           request:{
             type: 'POST',
             url: 'http://localhost:4000/users/',
-            body: {name: 'String', price: 'Number'}
           }
         })
       })
@@ -200,7 +151,6 @@ router.post('/signup', (req, res, next) => {
           error:err
         })
       })
-
   })
 
   // router.delete('/:userId', (req, res, next) => {

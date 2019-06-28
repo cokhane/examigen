@@ -1,0 +1,44 @@
+//--------------------------- user profile
+
+    <div className="user-profile-container">
+            <div className="flex-center">
+              <div className="user-profile-img">
+              <img src={this.state.setImage} alt=""/>
+              <div className="edit-user-image-container">
+                <FontAwesomeIcon onClick={this.openUserUpdatePhotoModal} className="edit-user-image user-icons"  icon="camera"/>
+              </div>
+
+              </div>
+            </div>
+            <div className="flex-center">
+              <h6><span style={this.props.userBlocked ? {color:"red"} : {color:"white"}}> {this.props.userRole}</span> : <span className="user-sidebar-role">{this.props.userName}</span></h6>
+            </div>
+
+            {/* <div className="flex-center">
+              <div  className="user-profile-role">
+                <strong>Role: </strong><span style={this.props.userBlocked ? {color:"red"} : {color:"white"}}> {this.props.userRole}</span>
+              </div>
+            </div> */}
+
+            <div style={this.props.userRole !== "Agent" ? {display:"block"} : {display:"none"}}>
+              <div className="flex-center">
+                <div className="user-icons flex-around" style={{width:"30%"}}>
+                  {/* <FontAwesomeIcon className="user-icon-style"  icon="money-check" onClick={this.openUserBalanceModal}/> <span>|</span> */}
+                  <FontAwesomeIcon className="user-icon-style" onClick={this.props.userBlocked ? this.blockPopup : ()=>this.tabChange("User Profile","userprofile")} icon="users-cog"/>  <span style={this.props.userRole === "Admin" ? {display:"none"} : {display:"block"}}>|</span>
+                  <FontAwesomeIcon className="user-icon-style" icon="cash-register"  onClick={this.props.userBlocked ? this.blockPopup : this.openUserChargeModal} style={this.props.userRole === "Admin" ? {display:"none"} : {display:"block"}}/>
+                </div>
+              </div>
+            </div>
+
+            <div style={this.props.userRole === "Agent" ? {display:"block"} : {display:"none"}}>
+              <div className="flex-center">
+                <div className="user-icons flex-around" style={this.props.userRole === "Agent" ? {width:"30%"} : {width:"50%"} }>
+                  <FontAwesomeIcon className="user-icon-style" onClick={()=>this.tabChange("User Profile","userprofile")} icon="users-cog"/>  <span style={this.props.userRole === "Admin" ? {display:"none"} : {display:"block"}}></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+-----------------------------------
