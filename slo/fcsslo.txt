@@ -1,0 +1,47 @@
+
+
+
+
+
+1. Create an Admin Dashboard with authentication.
+	Requirements:
+		-password must be encrypted.
+	Extra:
+		-create a registration page.
+
+
+2. Create a Client Management(CRUD) inside the Admin Dashboard.
+	Requirements:
+		-Listing Page [DISPLAY]
+			-display the ff:
+				-First Name
+				-Last Name
+				-Email
+				-Actions
+					-edit button - redirect to edit/update page
+					-delete button - prompt user before deleting
+		-Create Page [POST]
+			-User must be able to enter the ff. details:
+				-First Name (core field)
+				-Last Name (core field)
+				-Email (core field)
+				-Other Details (required atleast one)
+					-User must be able to add multiple dynamic fields (Contact Info., Address, etc..)(Add a Key Value Pair).
+			-Extra:
+				-add validations to the ff:
+					-First Name - required
+					-Last Name - required
+					-Email - required/email
+		-Update Page
+			-Display core fields with saved values:
+				-First Name
+				-Last Name
+				-Email
+			-Display Other Details Fields with values.
+			-Display a delete button which when clicked prompts the user before proceeding with the delete process.
+			-User can update the values or change the other details fields
+			-Extra:
+				-add validations to the ff:
+					-First Name - required
+					-Last Name - required
+					-Email - required/email
