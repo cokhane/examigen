@@ -1364,6 +1364,13 @@ aws4@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
 
+axios@^0.18.0:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.1.tgz#ff3f0de2e7b5d180e757ad98000f1081b87bcea3"
+  dependencies:
+    follow-redirects "1.5.10"
+    is-buffer "^2.0.2"
+
 axobject-query@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.0.2.tgz#ea187abe5b9002b377f925d8bf7d1c561adf38f9"
@@ -3673,6 +3680,12 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
+follow-redirects@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  dependencies:
+    debug "=3.1.0"
+
 follow-redirects@^1.0.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.6.1.tgz#514973c44b5757368bad8bddfe52f81f015c94cb"
@@ -4103,6 +4116,10 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
 
+highlight-words-core@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/highlight-words-core/-/highlight-words-core-1.2.2.tgz#1eff6d7d9f0a22f155042a00791237791b1eeaaa"
+
 history@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
@@ -4502,6 +4519,10 @@ is-binary-path@^1.0.0:
 is-buffer@^1.0.2, is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
+
+is-buffer@^2.0.2:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.5.tgz#ebc252e400d22ff8d77fa09888821a24a658c191"
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
@@ -5686,6 +5707,10 @@ mem@^4.0.0:
     mimic-fn "^1.0.0"
     p-is-promise "^1.1.0"
 
+memoize-one@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-4.1.0.tgz#a2387c58c03fff27ca390c31b764a79addf3f906"
+
 memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
@@ -5894,9 +5919,9 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   dependencies:
     minimist "0.0.8"
 
-moment@2.x, moment@^2.24.0:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+moment@2.x, moment@^2.24.0, moment@^2.29.2:
+  version "2.29.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -7789,6 +7814,14 @@ react-dom@^16.7.0:
 react-error-overlay@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.2.tgz#888957b884d4b25b083a82ad550f7aad96585394"
+
+react-highlight-words@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/react-highlight-words/-/react-highlight-words-0.16.0.tgz#4b4b9824e3d2b98789d3e3b3aedb5e961ae1b7cf"
+  dependencies:
+    highlight-words-core "^1.2.0"
+    memoize-one "^4.0.0"
+    prop-types "^15.5.8"
 
 react-is@^16.7.0, react-is@^16.8.1:
   version "16.8.3"
